@@ -11,10 +11,8 @@ const HomePage = ({
 }) => (
     <div className="HomePage">
         <Header />
-        <div className="HomePage__buttons">
-            <UserActions />
-            <ReportsActions />
-        </div>
+        <UserActions />
+        <ReportsActions />
         <OverviewInfos />
     </div>
 );

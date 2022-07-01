@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const USER_TYPES = {
     ADMIN: 'admin',
@@ -8,13 +8,14 @@ const USER_TYPES = {
 }
 
 const ReportsActions = ({ userType }) => {
-    const actionsToDisplay = [];
-
-    const getActionsToDisplay = () => ({
-        [USER_TYPES.ADMIN]: actionsToDisplay.push({}),
-        [USER_TYPES.PILOT]: actionsToDisplay.push({}),
-        [USER_TYPES.SCUDERIA]: actionsToDisplay.push({}),
-    })[userType || USER_TYPES.ADMIN];
+    const actionsToDisplay = ({
+        [USER_TYPES.ADMIN]: () => [{label: "Resultados por status", callback: () => {}},
+                                    {label: "Aeroportos a 100km de cidade", callback: () => {}}],
+        [USER_TYPES.PILOT]: () => [{label: "Pilotos", callback: () => {}},
+                                    {label: "Resultados por status", callback: () => {}}],
+        [USER_TYPES.SCUDERIA]: () =>  [{label: "Vitórias", callback: () => {}},
+                                        {label: "Resultados por status", callback: () => {}}],
+    }[userType])();
 
     return (
         <div className="ReportsActions">
